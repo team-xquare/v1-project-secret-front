@@ -68,7 +68,7 @@ export const ProjectList = () => {
       await axios.post(url)
         .then((res) => {
           setProgressed([...progressed, it]);
-          if (progressed.length == selected.length) {
+          if (progressed.length === selected.length) {
             setProgressed([]);
             setProgress('재발급 완료!')
             setIsProgressing(false)
@@ -97,7 +97,7 @@ export const ProjectList = () => {
       await axios.delete(url)
         .then((res) => {
           setProgressed([...progressed, it]);
-          if (progressed.length == selected.length) {
+          if (progressed.length === selected.length) {
             setProgressed([]);
             setProgress('삭제 완료!')
             setIsProgressing(false)
@@ -175,7 +175,7 @@ export const ProjectList = () => {
             .filter((item) => item.isApproved)
             .map((item) => 
               <tr 
-                className={selectColor(selected.some((it) => it.id == item.id))}
+                className={selectColor(selected.some((it) => it.id === item.id))}
                 key={item.id}
                 onClick={() => toggleSelect(item)}
               >
