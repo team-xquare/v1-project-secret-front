@@ -20,14 +20,11 @@ export const ProjectApprove = () => {
     setSecret(searchParams.get('secret'))
   }, []);
 
-  const fetchData = async () => {
+  useEffect(() => {
     const url = 'http://localhost:8080/project-secret-manager/project?secret=' + secret
-    await axios.get(url)
+    axios.get(url)
       .then((res) => {setData(res.data); setFetchError("")})
       .catch((err) => setFetchError("권한이 없습니다"));
-  }
-  useEffect(() => {
-    fetchData();
   }, [secret]);
 
   const approveProject = async () => {
