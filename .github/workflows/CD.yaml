@@ -1,4 +1,4 @@
-name: Xquare Deploy for Stage
+name: Xquare Deploy for Prod
  
 on:
   push:
@@ -32,6 +32,6 @@ jobs:
     - name: Deploy to xquare
       uses: team-xquare/xquare-deployment-action@master 
       with:
-        environment: stag
+        environment: prod
         access_key: ${{ secrets.ACCESS_KEY }}
         github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
