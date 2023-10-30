@@ -120,7 +120,8 @@ export const Request = () => {
   
   return (
     <div className="my-[100px] flex flex-col items-center justify-center h-screen bg-gray-200">
-      <form className="p-6 flex flex-col gap-[15px] bg-white rounded shadow-md w-[500px]" onSubmit={handleSubmit}>
+
+      <form className="p-6 mt-[200px] flex flex-col gap-[15px] bg-white rounded shadow-md w-[500px]" onSubmit={handleSubmit}>
         <p>프로젝트 배포를 신청하기 위한 폼입니다.</p>
         <p>배포 Action 사용을 위한 엑세스 키 및 DB 계정 정보는 데브옵스 팀 검토 후 이메일을 통해 24시간 내에 전송됩니다.</p>
         <p>궁금한 사항은 담당자(김은빈, rlaisqls@gmail.com)에게 문의주세요!</p>
