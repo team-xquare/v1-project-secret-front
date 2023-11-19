@@ -15,7 +15,7 @@ export const Done = () => {
       <img className="h-[300px] my-4" src="https://github.com/rlaisqls/rlaisqls/assets/81006587/416ba6e7-193d-43a2-89ec-284a86e72e86" alt="Thankyou"/>
       <p className="text-[20px] text-center leading-loose">
         {projectName} 프로젝트에 대한 배포 신청이 완료되었습니다!<br/>
-        배포 Action 사용을 위한 엑세스 키 및 DB 계정 정보는 이메일을 통해 24시간 내에 전송됩니다.<br/>
+        배포 Action 사용을 위한 엑세스 키 및 DB 계정 정보는 관리자 검토 후 이메일을 통해 24시간 내에 전송됩니다.<br/>
         프로젝트에 대한 배포를 더 요청하고 싶다면 아래 버튼을 눌러주세요.
       </p>
 
