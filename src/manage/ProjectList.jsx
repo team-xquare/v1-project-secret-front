@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { getSecretCookie, resetSecretCookie } from '../util/cookie';
 
 export const TableHeaderCell = ({ value }) => {
   return (
@@ -41,18 +42,17 @@ export const ProjectList = () => {
   const [fetchError, setFetchError] = useState('');
 
   useEffect(() => {
-    const currentURL = new URL(window.location.href);
-    const searchParams = currentURL.searchParams;
-    console.log(searchParams.get('secret'))
-    setSecret(searchParams.get('secret'))
+    setSecret(getSecretCookie())
   }, []);
 
   useEffect(() => {
-    const url = 'http://localhost:8080/project-secret-manager/project?secret=' + secret
+    const url = 'https://prod-server.xquare.app/project-secret-manager/project?secret=' + secret
     console.log(url)
     axios.get(url)
       .then((res) => {setData(res.data); setFetchError("")})
-      .catch((err) => setFetchError("권한이 없습니다"));
+      .catch((err) => {
+        if (data.length == 0) { setFetchError("권한이 없습니다")}
+      });
   }, [secret]);
 
   const regenerateProjectSecret = async () => {
@@ -61,8 +61,8 @@ export const ProjectList = () => {
     setProgress('발급중...')
 
     selected.forEach(async (it) => {
-      const url = 'http://localhost:8080/project-secret-manager/project/' + it.id + '/access-key?secret=' + secret
-      await axios.post(url)
+      const url = 'https://prod-server.xquare.app/project-secret-manager/project/' + it.id + '/access-key?secret=' + secret
+      await axios.patch(url)
         .then((res) => {
           setProgressed([...progressed, it]);
           if (progressed.length === selected.length) {
@@ -90,7 +90,7 @@ export const ProjectList = () => {
 
       setProgress('삭제중...')
       setIsProgressing(true)
-      const url = 'http://localhost:8080/project-secret-manager/project/' + it.id + '?secret=' + secret
+      const url = 'https://prod-server.xquare.app/project-secret-manager/project/' + it.id + '?secret=' + secret
       await axios.delete(url)
         .then((res) => {
           setProgressed([...progressed, it]);
@@ -194,6 +194,9 @@ export const ProjectList = () => {
         </tbody>
       </table>
       {fetchError && <>{fetchError}</>}
+      <div onClick={() => resetSecretCookie()}>
+        로그아웃
+      </div>
     </div>
   );
 }

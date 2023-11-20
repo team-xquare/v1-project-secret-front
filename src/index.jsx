@@ -7,6 +7,7 @@ import { Done } from './request/Done';
 import { ProjectApprove } from './manage/ProjectApprove';
 import { ProjectList } from './manage/ProjectList';
 import reportWebVitals from './reportWebVitals';
+import Login from './manage/Login';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,6 +18,7 @@ root.render(
         <Route path="/done" element={<Done/>}></Route>
         <Route path="/admin/approve" element={<ProjectApprove/>}></Route>
         <Route path="/admin/list" element={<ProjectList/>}></Route>
+        <Route path="/admin" element={<Login/>}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
