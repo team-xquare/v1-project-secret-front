@@ -51,7 +51,7 @@ export const ProjectList = () => {
     axios.get(url)
       .then((res) => {setData(res.data); setFetchError("")})
       .catch((err) => {
-        if (data.length == 0) { setFetchError("권한이 없습니다")}
+        setFetchError("권한이 없습니다")
       });
   }, [secret]);
 
