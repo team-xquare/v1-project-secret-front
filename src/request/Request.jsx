@@ -61,7 +61,7 @@ export const Request = () => {
 
   async function checkProjectNameEnAvailability(value) {
     try {
-      await axios.post(`https://prod-server.xquare.app/project-secret-manager/project/duplicate?secret=xquare-helloworld&project-name=${value}`)
+      await axios.post(`http://localhost:8080/project-secret-manager/project/duplicate?secret=xquare-helloworld&project-name=${value}`)
         .then((res) => {
           if (res.data.duplicate) {
             projectNameEnInput.setError('이미 존재하는 프로젝트명입니다.')
@@ -112,7 +112,7 @@ export const Request = () => {
       };
 
       // Axios 요청 보내기
-      axios.post('https://prod-server.xquare.app/project-secret-manager/project', dataToSubmit)
+      axios.post('http://localhost:8080/project-secret-manager/project', dataToSubmit)
         .then((res) => {console.log(res); window.location.href = '/done?projectname=' + projectNameKrInput.value;})
         .catch((err) => console.error(err));
     }

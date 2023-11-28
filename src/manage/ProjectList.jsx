@@ -46,7 +46,7 @@ export const ProjectList = () => {
   }, []);
 
   useEffect(() => {
-    const url = 'https://prod-server.xquare.app/project-secret-manager/project?secret=' + secret
+    const url = 'http://localhost:8080/project-secret-manager/project?secret=' + secret
     console.log(url)
     axios.get(url)
       .then((res) => {setData(res.data); setFetchError("")})
@@ -61,7 +61,7 @@ export const ProjectList = () => {
     setProgress('발급중...')
 
     selected.forEach(async (it) => {
-      const url = 'https://prod-server.xquare.app/project-secret-manager/project/' + it.id + '/access-key?secret=' + secret
+      const url = 'http://localhost:8080/project-secret-manager/project/' + it.id + '/access-key?secret=' + secret
       await axios.patch(url)
         .then((res) => {
           setProgressed([...progressed, it]);
@@ -90,7 +90,7 @@ export const ProjectList = () => {
 
       setProgress('삭제중...')
       setIsProgressing(true)
-      const url = 'https://prod-server.xquare.app/project-secret-manager/project/' + it.id + '?secret=' + secret
+      const url = 'http://localhost:8080/project-secret-manager/project/' + it.id + '?secret=' + secret
       await axios.delete(url)
         .then((res) => {
           setProgressed([...progressed, it]);

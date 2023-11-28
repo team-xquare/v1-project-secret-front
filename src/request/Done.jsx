@@ -16,7 +16,7 @@ export const Done = () => {
       <p className="text-[20px] text-center leading-loose">
         {projectName} 프로젝트에 대한 배포 신청이 완료되었습니다!<br/>
         배포 Action 사용을 위한 엑세스 키 및 DB 계정 정보는 관리자 검토 후 이메일을 통해 24시간 내에 전송됩니다.<br/>
-        프로젝트에 대한 배포를 더 요청하고 싶다면 아래 버튼을 눌러주세요.
+        Github Actions 사용 방법은 <a href="https://github.com/team-xquare/xquare-deployment-action" rel="noopener noreferrer" target="_blank" >여기</a>서 확인하실 수 있습니다.
       </p>
 
       <a href="/request">
