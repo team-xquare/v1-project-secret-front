@@ -112,7 +112,7 @@ export const Request = () => {
       };
 
       // Axios 요청 보내기
-      axios.post('http://localhost:8080/project-secret-manager/project', dataToSubmit)
+      axios.post('https://prod-server.xquare.app/project-secret-manager/project', dataToSubmit)
         .then((res) => {console.log(res); window.location.href = '/done?projectname=' + projectNameKrInput.value;})
         .catch((err) => console.error(err));
     }
