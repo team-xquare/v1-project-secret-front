@@ -62,7 +62,7 @@ export const ProjectList = () => {
 
     selected.forEach(async (it) => {
       const url = 'https://prod-server.xquare.app/project-secret-manager/project/' + it.id + '/access-key?secret=' + secret
-      await axios.patch(url)
+      await axios.post(url)
         .then((res) => {
           setProgressed([...progressed, it]);
           if (progressed.length === selected.length) {
