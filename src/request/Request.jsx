@@ -47,7 +47,7 @@ export const Request = () => {
   const projectNameKrInput = useInput('', (value) => (value.trim() ? '' : '필수 항목입니다.'));
   const projectNameEnInput = useInput('', (value) => (/^[a-z-]+$/.test(value) ? '' : '영어 소문자와 -(대시)만 사용할 수 있습니다.'));
   const teamNameEnInput = useInput('', (value) => (/^[a-z-]+$/.test(value) ? '' : '영어 소문자와 -(대시)만 사용할 수 있습니다.'));
-  const githubLinkInput = useInput('', (value) => (/^https:\/\/github\.com\/[a-zA-Z0-9-._~:/?#[\]@!$&'()*+,;=]+$/.test(value) ? '' : '올바른 깃허브 URL이어야 합니다.'));
+  const githubLinkInput = useInput('', (value) => (/^https:\/\/github\.com\/[A-Za-z0-9_-]+\/[A-Za-z0-9_-]+$/.test(value) ? '' : '올바른 깃허브 URL이어야 합니다.'));
   const githubOrganizationInput = useInput('', (value) => (/^[a-zA-Z0-9-\s]+$/.test(value) ? '' : '영어 대소문자, 숫자와 -(대시)만 사용할 수 있습니다.'));
   const typeInput = useInput('', (value) => value === 'fe' || value === 'be' ? '' : 'ㅇㅅㅇ');
 
@@ -61,15 +61,17 @@ export const Request = () => {
 
   async function checkProjectNameEnAvailability(value) {
     try {
-      await axios.post(`https://prod-server.xquare.app/project-secret-manager/project/duplicate?secret=xquare-helloworld&project-name=${value}`)
-        .then((res) => {
-          if (res.data.duplicate) {
-            projectNameEnInput.setError('이미 존재하는 프로젝트명입니다.')
-          } else {
-            setDuplicateCheck(true)
-            projectNameEnInput.setError('')
-          }
-        })
+      if (!projectNameEnInput.error) {
+        await axios.post(`https://prod-server.xquare.app/project-secret-manager/project/duplicate?secret=xquare-helloworld&project-name=${value}`)
+          .then((res) => {
+            if (res.data.duplicate) {
+              projectNameEnInput.setError('이미 존재하는 프로젝트명입니다.')
+            } else {
+              setDuplicateCheck(true)
+              projectNameEnInput.setError('')
+            }
+          })
+      }
     } catch (error) {
       console.error(error);
     }
