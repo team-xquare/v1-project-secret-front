@@ -19,7 +19,7 @@ export const ProjectApprove = () => {
   }, []);
 
   useEffect(() => {
-    const url = 'https://prod-server.xquare.app/project-secret-manager/project?secret=' + secret
+    const url = 'https://prod-server.xquare.app/project-secret-manager/project'
     axios.get(url)
       .then((res) => {setData(res.data); setFetchError("")})
       .catch((err) => setFetchError("권한이 없습니다"));
