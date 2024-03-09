@@ -124,7 +124,7 @@ export const ProjectList = () => {
   return (
     <div className="bg-gray-100 p-4">
       <h1 className="text-[20px] font-bold mb-4">등록된 프로젝트 목록 ({data.filter((item) => item.isApproved).length})</h1>
-      <a href={"/admin/approve?secret=" + secret}>
+      <a href={"/admin/approve"}>
         <h1 className="text-[20px] text-slate-400 font-bold mb-4">요청된 프로젝트 목록 ({data.filter((item) => !item.isApproved).length})</h1>
       </a>
       <div>
