@@ -4,7 +4,7 @@ export const SignUpDone = () => {
 
   return (
       <div className="flex flex-col items-center justify-center h-screen bg-gray-200">
-          <img className="my-0 mx-auto h-16"
+          <img className="my-0 mx-auto h-16" alt="logo"
                src="https://github.com/rlaisqls/TIL/assets/81006587/4492b702-5cb6-40af-821d-e264cd82549b"/>
 
           <img className="h-[300px] my-4"
