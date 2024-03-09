@@ -1,14 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 export const SignUpDone = () => {
-  
-  const [projectName, setProjectName] = useState('');
-
-  useEffect(() => {
-    const currentURL = new URL(window.location.href);
-    const searchParams = currentURL.searchParams;
-    setProjectName(searchParams.get('projectname'))
-  }, []);
 
   return (
       <div className="flex flex-col items-center justify-center h-screen bg-gray-200">
