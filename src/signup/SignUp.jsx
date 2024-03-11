@@ -88,7 +88,7 @@ export const SignUp = () => {
 
     let check = true;
     if (!studentNumberDuplicateCheck) { studentNumberInput.setError('중복체크를 완료해주세요.'); check = false; }
-    if (!accountIdDuplicateCheck) { studentNumberInput.setError('중복체크를 완료해주세요.'); check = false; }
+    if (!accountIdDuplicateCheck) { accountIdInput.setError('중복체크를 완료해주세요.'); check = false; }
 
     if (!nameInput.value) { nameInput.setError('필수 항목입니다.'); check = false; }
     if (!birthdayInput.value) { birthdayInput.setError('필수 항목입니다.'); check = false; }
