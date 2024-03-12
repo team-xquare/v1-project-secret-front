@@ -124,7 +124,7 @@ export const SignUp = () => {
   }
   
   return (
-    <div className="my-[20%] flex flex-col items-center justify-center h-screen bg-gray-200">
+    <div className="my-[2%] flex flex-col items-center justify-center h-screen bg-gray-200">
       <form className="p-6 flex text-[0.9em] flex-col gap-[15px] bg-white rounded w-[100%]" onSubmit={handleSubmit}>
         <img alt="logo" className="my-0 mx-auto h-16" src="https://github.com/rlaisqls/TIL/assets/81006587/4492b702-5cb6-40af-821d-e264cd82549b"/>
         <p>안녕하세요. Xquare 회원가입 페이지입니다 :)<br/>자신의 정보를 입력하여 회원가입 해주세요!</p>
