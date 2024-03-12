@@ -2,8 +2,7 @@ name: Xquare Deploy for Prod
  
 on:
   push:
-    branches:
-      - main 
+    branches: [ main ]
 
 jobs:
   build:
