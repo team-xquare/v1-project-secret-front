@@ -7,7 +7,7 @@ export const SignUpDone = () => {
           <img className="my-0 mx-auto h-16" alt="logo"
                src="https://github.com/rlaisqls/TIL/assets/81006587/4492b702-5cb6-40af-821d-e264cd82549b"/>
 
-          <img className="w-[70%] my-4"
+          <img className="w-[70%] max-w-72 my-4"
                src="https://github.com/rlaisqls/rlaisqls/assets/81006587/416ba6e7-193d-43a2-89ec-284a86e72e86"
                alt="Thankyou"/>
           <p className="text-[1em] text-center leading-loose">

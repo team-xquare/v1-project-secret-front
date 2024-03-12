@@ -3,28 +3,32 @@ import axios from 'axios';
 
 function InputField({ label, type, value, onChange, error }) {
   return (
-    <label className="block mb-2 text-sm text-gray-700">
-      {label}
-      <input
-        className={`w-full px-3 py-2 mt-1 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline ${error ? 'border-red-500' : ''}`}
-        type={type}
-        value={value}
-        onChange={onChange}
-      />
-      {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
-    </label>
+
+        <label className="w-full block mb-2 text-sm text-gray-700">
+          {label}
+          <input
+              className={`w-full px-3 py-2 mt-1 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline ${error ? 'border-red-500' : ''}`}
+              type={type}
+              value={value}
+              onChange={onChange}
+          />
+          {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+        </label>
+
   );
 }
 
 function useInput(initialValue, validation) {
   const [value, setValue] = useState(initialValue);
   const [error, setError] = useState('');
+
   function handleChange(event) {
     const inputValue = event.target.value;
     setValue(inputValue);
     setError(inputValue === '' ? '필수 항목입니다.' : validation(inputValue));
   }
-  return { value, setValue, onChange: handleChange, error, setError };
+
+  return {value, setValue, onChange: handleChange, error, setError};
 }
 
 export const SignUp = () => {
@@ -124,8 +128,8 @@ export const SignUp = () => {
   }
   
   return (
-    <div className="my-[2%] flex flex-col items-center justify-center h-screen bg-gray-200">
-      <form className="p-6 flex text-[0.9em] flex-col gap-[15px] bg-white rounded w-[100%]" onSubmit={handleSubmit}>
+    <div className="mx-auto my-[2%] max-w-[400px] flex flex-col items-center justify-center h-screen bg-gray-200">
+      <form className="mx-auto p-6 max-w-[400px] flex items-start text-[0.9em] flex-col gap-[15px] bg-white rounded w-[100%]" onSubmit={handleSubmit}>
         <img alt="logo" className="my-0 mx-auto h-16" src="https://github.com/rlaisqls/TIL/assets/81006587/4492b702-5cb6-40af-821d-e264cd82549b"/>
         <p>안녕하세요. Xquare 회원가입 페이지입니다 :)<br/>자신의 정보를 입력하여 회원가입 해주세요!</p>
         <InputField
@@ -140,7 +144,7 @@ export const SignUp = () => {
             {...birthdayInput}
             required
         />
-        <div className="flex flex-row gap-[10px]">
+        <div className="flex flex-row gap-[10px] w-full">
           <InputField
               label="학번"
               type="number"
@@ -149,14 +153,14 @@ export const SignUp = () => {
           />
           {!studentNumberDuplicateCheck ? (
               <div
-                  className="px-4 py-2 mt-[27.5px] w-fit h-fit outline outline-2 outline-slate-900 rounded-md hover:outline-slate-600 hover:text-slate-600"
+                  className="px-4 py-2 mt-[27.5px] w-[30%] h-fit outline outline-2 outline-slate-900 rounded-md hover:outline-slate-600 hover:text-slate-600"
                   onClick={async () => checkStudentNumberAvailability(studentNumberInput.value)}>중복체크</div>
           ) : (
               <div
-                  className="px-4 py-2 mt-[27.5px] w-fit h-fit outline outline-2 outline-slate-500 text-slate-500 rounded-md bg-slate-200">사용가능</div>
+                  className="px-4 py-2 mt-[27.5px] w-[30%] h-fit outline outline-2 outline-slate-500 text-slate-500 rounded-md bg-slate-200">사용가능</div>
           )}
         </div>
-        <div className="flex flex-row gap-[10px]">
+        <div className="flex flex-row gap-[10px] w-full">
           <InputField
               label="아이디"
               type="text"
@@ -165,11 +169,11 @@ export const SignUp = () => {
           />
           {!accountIdDuplicateCheck ? (
               <div
-                  className="px-4 py-2 mt-[27.5px] w-fit h-fit outline outline-2 outline-slate-900 rounded-md hover:outline-slate-600 hover:text-slate-600"
+                  className="px-4 py-2 mt-[27.5px] w-[30%] h-fit outline outline-2 outline-slate-900 rounded-md hover:outline-slate-600 hover:text-slate-600"
                   onClick={async () => checkAccountIdAvailability(accountIdInput.value)}>중복체크</div>
           ) : (
               <div
-                  className="px-4 py-2 mt-[27.5px] w-fit h-fit outline outline-2 outline-slate-500 text-slate-500 rounded-md bg-slate-200">사용가능</div>
+                  className="px-4 py-2 mt-[27.5px] w-[30%] h-fit outline outline-2 outline-slate-500 text-slate-500 rounded-md bg-slate-200">사용가능</div>
           )}
         </div>
         <InputField
